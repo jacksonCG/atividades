@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <title>Cadastrar Produtos</title>
+        <link rel="stylesheet" type="text/css" href="estilo.css";
+    </head>
+    <body>
+        <?php
+            require_once("menu.php");
+        ?>    
+        <form action="editar.php" method="post">
+            <label>Digite o código do Produro para editar</label>
+            <br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="id" />
+            <br/><br/>
+            <?php require_once("campos_produtos.php");?>
+            <input type="submit" value="Editar" />
+        </form>
+    </body>
+        
+</html>
+
+
+<?php
+    session_start();
+    if(isset($_SESSION["cadastros"])){
+        $cadastros = $_SESSION["cadastros"];
+        
+        foreach($cadastros as $id => $produtos){
+            if($produtos != null){ 
+            echo "[$id] =>" . $produtos["nome"] .  "<br/>";
+            }
+        }
+        
+        
+    }
+    
+    else{
+        echo "Não existem produtos cadastrados";
+    }
+?>
+
