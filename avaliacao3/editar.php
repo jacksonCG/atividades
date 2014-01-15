@@ -5,13 +5,14 @@
     
     $id = $_REQUEST["id"];
     $novoNome = $_REQUEST["nome"];
-    $cor = $_REQUEST["cor"];
-    $detalhes = $_REQUEST["detalhes"];
-    $aceito = $_REQUEST["aceito"];
+    $sexo = $_REQUEST["sexo"];
+    $idade = $_REQUEST["idade"];
+    $estado = $_REQUEST["estado"];
     
-    
-    
-    $prazo = $_REQUEST["prazo"];
+    $aceito = false;
+    if(isset($_REQUEST["aceito"])){
+        $aceito = true;
+    }
 
     if(!isset($_SESSION["cadastros"])){
         echo "Não existem cadastro para editar";
@@ -20,9 +21,13 @@
     else{
         $cadastros =& $_SESSION["cadastros"];
         
-        $produtos = array("aceito"=>$aceito,"nome"=> $novoNome,"detalhes"=>$detalhes, "cor" => $cor,"prazo"=>$prazo);
+        $pessoa = array("nome"=> $novoNome
+                         , "sexo" => $sexo
+                         ,"idade"=>$idade
+                         ,"estado"=>$estado
+                         ,"aceito"=>$aceito);
         
-        $cadastros[$id] = $produtos;
+        $cadastros[$id] = $pessoa;
     }
     
     echo "Edição efetuado com sucesso !!!";
