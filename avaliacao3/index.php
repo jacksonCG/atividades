@@ -1,12 +1,9 @@
 <style>
-    .Vermelho{
-        color:red;
-    }
-    .Azul{
+    .m{
         color:blue;
     }
-    .Verde{
-        color:green;
+    .f{
+        color:red;
     }
 </style>
 <?php
@@ -19,21 +16,19 @@
         
         echo"<dl>";
         
-        foreach($cadastros as $produtos){
-            if($produtos != null){
+        foreach($cadastros as $pessoas){
+            if($pessoas != null){
                 
-                $cor = $produtos["cor"];
-                $aceito=$produtos["aceito"];
-                $prazo = $produtos["prazo"];
-                $detalhes = $produtos["detalhes"];
+                $sexo = $pessoas["sexo"];
+                $idade=$pessoas["idade"];
+                $aceito=$pessoas["aceito"];
+                $estado = $pessoas["estado"];
                 //titulo da descrição
-                echo "<dt class='$cor'>" . $produtos["nome"]. "</dt>";
+                echo "<dt class='$sexo'>" . $pessoas["nome"]. "</dt>";
                 //detalhes da descrição
-                echo "<dd>Cor: " . $cor . "</dd>";
-               
-                echo "<dd>Prazo:" . $prazo . "</dd>";
-                
-                echo "<dd>Detalhes:" . $detalhes . "</dd>";
+                echo "<dd>Sexo: " . $sexo . "</dd>";
+                echo "<dd>Idade:" . $idade . "</dd>";
+                echo "<dd>Estado:" . $estado . "</dd>";
                 
                 echo"<dd>Aceito o contrato*:";
                 if($aceito){
@@ -50,6 +45,6 @@
         
     }    
     else{
-        echo "Não existem produtos cadastradas";
+        echo "Não existem pessoas cadastradas";
     }
 ?>
