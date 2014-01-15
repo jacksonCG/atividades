@@ -1,13 +1,13 @@
 <html>
     <head>
-        <title>Cadastro de Produtos</title>
+        <title>Cadastro de pessoas</title>
     </head>
     <body>
         <?php
             require_once("menu.php");
         ?>    
         <form action="remover.php" method="post">
-            <label>Digite o código do Produto para remover</label>
+            <label>Digite o código da pessoa para remover</label>
             <br/>
             <input type="text" name="id" />
             <input type="submit" value="Remover" />
@@ -22,9 +22,9 @@
     if(isset($_SESSION["cadastros"])){
         $cadastros = $_SESSION["cadastros"];
         
-        foreach($cadastros as $id => $produtos){
-            if($produtos != null){ 
-            echo"[$id] => " . $produtos["nome"] . "<br/>";
+        foreach($cadastros as $id => $pessoas){
+            if($pessoas != null){ 
+            echo"[$id] => " . $pessoas["nome"] . "<br/>";
             }
         }
         
