@@ -1,18 +1,18 @@
 <html>
     <head>
-        <title>Cadastrar Produtos</title>
-        <link rel="stylesheet" type="text/css" href="estilo.css";
+        <title>Cadastro de pessoas</title>
+        
     </head>
     <body>
         <?php
             require_once("menu.php");
         ?>    
         <form action="editar.php" method="post">
-            <label>Digite o código do Produro para editar</label>
+            <label>Digite o código da pessoa para editar</label>
             <br/>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="id" />
             <br/><br/>
-            <?php require_once("campos_produtos.php");?>
+            <?php require_once("campos_pessoa.php");?>
             <input type="submit" value="Editar" />
         </form>
     </body>
@@ -25,9 +25,9 @@
     if(isset($_SESSION["cadastros"])){
         $cadastros = $_SESSION["cadastros"];
         
-        foreach($cadastros as $id => $produtos){
-            if($produtos != null){ 
-            echo "[$id] =>" . $produtos["nome"] .  "<br/>";
+        foreach($cadastros as $id => $pessoas){
+            if($pessoas != null){ 
+            echo "[$id] =>" . $pessoas["nome"] .  "<br/>";
             }
         }
         
@@ -35,7 +35,6 @@
     }
     
     else{
-        echo "Não existem produtos cadastrados";
+        echo "Não existem pessoas cadastradas";
     }
 ?>
-
