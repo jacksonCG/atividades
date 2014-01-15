@@ -1,7 +1,6 @@
 <html>
     <head>
-    
-        <title>Produtos</title>
+        <title>Cadastro de pessoas</title>
         
     </head>
     <body>
@@ -9,7 +8,7 @@
             require_once("menu.php");
         ?>    
         <form action="cadastrar.php" method="post">
-            <?php require_once("campos_produtos.php"); ?>
+            <?php require_once("campos_pessoa.php"); ?>
             <input type="submit" value="Enviar" />
         </form>
     </body>
