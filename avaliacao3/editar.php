@@ -8,6 +8,8 @@
     $sexo = $_REQUEST["sexo"];
     $idade = $_REQUEST["idade"];
     $estado = $_REQUEST["estado"];
+    $cpf = $_REQUEST["cpf"];
+    $telefone = $_REQUEST["telefone"];
     
     $aceito = false;
     if(isset($_REQUEST["aceito"])){
@@ -25,7 +27,9 @@
                          , "sexo" => $sexo
                          ,"idade"=>$idade
                          ,"estado"=>$estado
-                         ,"aceito"=>$aceito);
+                         ,"aceito"=>$aceito
+                         ,"cpf"=>$cpf
+                         ,"telefone"=>$telefone);
         
         $cadastros[$id] = $pessoa;
     }
