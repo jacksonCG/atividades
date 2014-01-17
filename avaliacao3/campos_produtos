@@ -1,11 +1,17 @@
 <label>Nome da Pessoa*:</label><input type="text" name="nome" />
             <br/> <br/>
             <label>Sexo*:</label>
-            &nbsp;<input type="radio" name="sexo" value="m" checked="checked" /><label>Masculino</label>
-            <input type="radio" name="sexo" value="f" /><label>Feminino</label>
+            &nbsp;<input type="radio" name="sexo" value="Masculino" checked="checked" /><label>Masculino</label>
+            <input type="radio" name="sexo" value="Feminino" /><label>Feminino</label>
             <br/><br/>
             <label>Idade*:</label>
             <input type="text" name="idade" /><br/>
+            <br/>
+            <label>CPF*:</label>
+            <input type="text" name="cpf" maxlength="14" /><br/>
+            <br/>
+            <label>Telefone*:</label>
+            <input type="text" name="telefone" maxlength="8"/><br/>
             <br/>
             <label>Estado*:</label>
             <select name="estado" />
@@ -25,4 +31,3 @@
             <label>Aceito o Contrato </label>
             <input type="checkbox" value="Sim" name="aceito" />
             <br/>
-            
