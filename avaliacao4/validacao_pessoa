@@ -1,0 +1,107 @@
+<?php
+
+function validaPessoa($nome, $cpf, $nascimento, $sexo, $estado, $telefone, $observacoes){
+    
+   $campos = true;  
+    
+    //VALIDAÃ‡ÃƒO
+    
+    //NOME
+    $nome = trim($nome);
+    if(empty($nome)){
+        echo"Por Favor, preencha o campo <b>NOME</b> <br/>";
+        $campos = false;
+    }
+    else if(!preg_match("/^[a-zA-ZÃ£ÃƒÃ¡ÃÃ Ã€ÃªÃŠÃ©Ã‰Ã¨ÃˆÃ­ÃÃ¬ÃŒÃ´Ã”ÃµÃ•Ã³Ã“Ã²Ã’ÃºÃšÃ¹Ã™Ã»Ã›Ã§Ã‡\s]+$/",$nome)){
+        echo"Formato invalido do <b>NOME</b> <br/>";
+        $campos = false;
+    }
+    //CPF
+    $cpf = trim($cpf);
+    if(strlen($cpf)!=14 and strlen($cpf) !=11){
+        $cpf = trim($cpf);
+        echo"Tamanho invalido para <b>CPF</b> <br/>";
+        $campos = false;
+    }
+    else if(!preg_match("/^\d{3}\\.\d{3}\\.\d{3}\\-\d{2}$/",$cpf)){
+        echo"Formato invalido  para o campo <b>CPF</b> <br/>";
+        $campos = false;
+    }
+    //SEXO
+    if(!isset($_REQUEST["sexo"])){
+        echo"Por Favor preencha o <b>SEXO</b> <br/>";
+        $campos = false;
+    }
+    else{
+        $sexo = $_REQUEST["sexo"];
+    }
+    //ESTADO
+    if($estado == -1){
+        echo"Por Favor selecione um <b>ESTADO</b> <br/>";
+        $campos = false;
+    }
+    //TELEFONE
+    $telefone = trim($telefone);
+    if(strlen($telefone)!=13){
+        echo"Tamanho invalido para <b>TELEFONE</b> <br/>";
+        $campos = false;
+    }
+    elseif(!preg_match("/^\d{3}?\s\d{4}\\-\d{4}$/",$telefone)){
+        echo"Formato invalido para o  campo <b>Telefone</b> <br/>";
+        $campos = false;
+    }
+    //NASCIMENTO
+    $nascimento = trim($nascimento);
+    if(empty($nascimento)){
+        echo"Por Favor,preencha o campo <b>NASCIMENTO</b> <br/>";
+        $campos = false;
+    }
+    elseif(!preg_match("/^\d{2}\\/\d{2}\\/\d{4}$/",$nascimento)){
+        echo "Formato invalido do <b>NASCIMENTO</b> Utilize o formato dd/mm/aaaa <br/>";
+        $campos = false;
+    }
+    else{
+        $pedacos = explode('/',$nascimento);
+        $dia = $pedacos[0];
+        $mes = $pedacos[1];
+        $ano = $pedacos[2];
+        
+        if(!checkdate($mes, $dia, $ano)){
+            echo "Data invÃ¡lida";
+            $camposValidos = false;                           
+        }
+       
+        else{
+            $nascimentoYmd = $ano.$mes.$dia;
+            $dataAtual = date('Ymd');
+        }
+            
+        if($dataAtual > $nascimentoYmd){
+            echo "JÃ¡ passou";
+        }
+        else if($dataAtual < $nascimentoYmd){
+                    echo "Ã‰ no futuro" ;
+        }
+        else{
+                    echo "Ã‰ hoje";            
+                }
+    }
+
+    
+    //OBSERVAÃ‡ÃƒO
+    $observacoes = trim($observacoes);
+    if(empty($observacoes)){
+        echo"Por Favor,preencha o campo <b>OBSERVACAO</b> <br/>";
+        $campos = false;
+    }
+    elseif(!preg_match("/^[a-zA-ZÃ£ÃƒÃ¡ÃÃ Ã€ÃªÃŠÃ©Ã‰Ã¨ÃˆÃ­ÃÃ¬ÃŒÃ´Ã”ÃµÃ•Ã³Ã“Ã²Ã’ÃºÃšÃ¹Ã™Ã»Ã›Ã§Ã‡\s\\.\\,]+$/",$observacoes)){
+        echo"Formato invalido para o  campo <b>Observacao</b> <br/>";
+        $campos = false;
+        
+    }    
+    return $campos;
+}
+
+//("/^[0-3][0-9]\\/[0-1][0-2]\\/[1-2][0-9][0-9][0-9]$/")//
+
+?>
